@@ -1,0 +1,59 @@
+# ==========================================
+# Umum
+# ==========================================
+.DS_Store
+Thumbs.db
+*.log
+*.sql
+*.zip
+
+# ==========================================
+# Dependensi (jangan pernah di-commit)
+# ==========================================
+/node_modules
+/vendor
+
+# ==========================================
+# Editor/IDE
+# ==========================================
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# ==========================================
+# Laravel (folder: api)
+# ==========================================
+/api/.env
+/api/bootstrap/cache/*.php
+/api/storage/*.key
+/api/storage/app/
+/api/storage/framework/
+/api/storage/logs/
+/api/public/storage
+/api/public/hot
+/api/phpunit.xml
+/api/docker-compose.yml
+/api/.docker/
+/api/start-sail
+
+# ==========================================
+# React (folder: client)
+# ==========================================
+/client/dist
+/client/node_modules
+/client/.env
+/client/.env.local
+/client/.env.development.local
+/client/.env.test.local
+/client/.env.production.local
+/client/npm-debug.log*
+/client/yarn-debug.log*
+/client/yarn-error.log*
+
+# ==========================================
+# Optional: system files
+# ==========================================
+*.bak
+*.tmp
+*.swp
