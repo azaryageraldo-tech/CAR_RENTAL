@@ -20,16 +20,23 @@ function Footer() {
     <footer className="bg-gray-900 text-gray-400">
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-          {/* Kolom 1: Logo & Deskripsi */}
+          
+          {/* --- BAGIAN YANG DIPERBAIKI --- */}
           <div className="md:col-span-1">
             <div className="flex items-center mb-4">
-              <img src={logo} alt="CARRENTAL Logo" className="h-10 w-10 mr-3" />
-              <span className="text-xl font-bold text-white">CARRENTAL</span>
+              <img 
+                src={logo} 
+                alt="CARRENTAL Logo" 
+                className="h-16 w-16 rounded-full object-cover mr-3" // 1. Ukuran diperbesar & dibuat bulat
+              />
+              <span className="text-xl font-bold text-white">
+                CAR<span className="text-orange-500">RENTAL</span> {/* 2. Warna disesuaikan */}
+              </span>
             </div>
             <p className="text-sm">Solusi rental mobil terpercaya untuk segala kebutuhan perjalanan Anda.</p>
           </div>
+          {/* --- AKHIR BAGIAN YANG DIPERBAIKI --- */}
           
-          {/* Kolom 2: Navigasi */}
           <div>
             <h3 className="text-white font-semibold tracking-wider uppercase">Navigasi</h3>
             <ul className="mt-4 space-y-2">
@@ -40,7 +47,6 @@ function Footer() {
             </ul>
           </div>
 
-          {/* Kolom 3: Kontak */}
           <div>
             <h3 className="text-white font-semibold tracking-wider uppercase">Kontak</h3>
             <ul className="mt-4 space-y-2">
@@ -50,7 +56,6 @@ function Footer() {
             </ul>
           </div>
 
-          {/* Kolom 4: Media Sosial */}
           <div>
             <h3 className="text-white font-semibold tracking-wider uppercase">Ikuti Kami</h3>
             <div className="flex mt-4 space-x-6">

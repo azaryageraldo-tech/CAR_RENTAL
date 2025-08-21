@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Api\Admin\DashboardController;
 use App\Http\Controllers\Api\Admin\CarController;
 use App\Http\Controllers\Api\Admin\OrderController;
@@ -43,11 +42,13 @@ Route::post('/login', function (Request $request) {
     return response()->json(['user' => $user, 'token' => $token]);
 });
 
-// Landing Page & Proses Pemesanan
+// Landing Page, Proses Pemesanan, dan Kwitansi
 Route::get('/public/cars', [PublicCarController::class, 'index']);
 Route::get('/public/cars/{car}', [PublicCarController::class, 'show']);
 Route::post('/public/orders', [PublicOrderController::class, 'store']);
 Route::post('/public/payment/create-transaction', [PaymentController::class, 'createTransaction']);
+Route::get('/public/orders/{order}', [PublicOrderController::class, 'show']);
+Route::get('/public/orders/{order}/receipt', [PublicOrderController::class, 'downloadPublicReceipt']);
 
 // Webhook dari Midtrans
 Route::post('/midtrans/webhook', [PaymentController::class, 'webhook']);
@@ -69,7 +70,10 @@ Route::middleware('auth:sanctum')->group(function () {
     // Grup untuk Panel Admin
     Route::prefix('admin')->group(function () {
         Route::get('/dashboard', [DashboardController::class, 'index']);
+        Route::get('/reports/export-orders', [DashboardController::class, 'exportOrders']);
         Route::apiResource('cars', CarController::class);
         Route::get('orders', [OrderController::class, 'index']);
+        Route::post('orders/{order}/complete', [OrderController::class, 'completeOrder']);
+        Route::get('orders/{order}/receipt', [OrderController::class, 'downloadReceipt']);
     });
 });

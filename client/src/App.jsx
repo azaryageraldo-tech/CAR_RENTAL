@@ -4,7 +4,8 @@ import AOS from 'aos';
 
 // Halaman & Komponen Publik
 import LandingPage from './LandingPage';
-import BookingPage from './BookingPage'; // <-- Impor dari src/BookingPage.jsx
+import BookingPage from './BookingPage';
+import BookingSuccessPage from './pages/public/BookingSuccessPage'; 
 
 // Halaman & Komponen Admin
 import Register from './Register';
@@ -13,7 +14,7 @@ import ProtectedRoute from './ProtectedRoute';
 import AdminLayout from './pages/admin/AdminLayout';
 import Dashboard from './pages/admin/Dashboard';
 import CarsIndex from './pages/admin/CarsIndex';
-import CarForm from './pages/admin/CarsForm';
+import CarForm from './pages/admin/CarsForm'; // <-- PERBAIKI DI SINI
 import OrdersIndex from './pages/admin/OrdersIndex';
 
 function App() {
@@ -25,7 +26,8 @@ function App() {
     <Routes>
       {/* Rute Publik */}
       <Route path="/" element={<LandingPage />} />
-      <Route path="/booking/:carId" element={<BookingPage />} /> {/* <-- Pastikan Route ini ada */}
+      <Route path="/booking/:carId" element={<BookingPage />} />
+      <Route path="/booking/success/:orderId" element={<BookingSuccessPage />} />
       <Route path="/register" element={<Register />} />
       <Route path="/login" element={<Login />} />
 

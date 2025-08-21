@@ -11,6 +11,7 @@ return array(
     'App\\Http\\Controllers\\Api\\Admin\\OrderController' => $baseDir . '/app/Http/Controllers/Api/Admin/OrderController.php',
     'App\\Http\\Controllers\\Api\\Public\\CarController' => $baseDir . '/app/Http/Controllers/Api/Public/CarController.php',
     'App\\Http\\Controllers\\Api\\Public\\OrderController' => $baseDir . '/app/Http/Controllers/Api/Public/OrderController.php',
+    'App\\Http\\Controllers\\Api\\Public\\PaymentController' => $baseDir . '/app/Http/Controllers/Api/Public/PaymentController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
     'App\\Models\\Car' => $baseDir . '/app/Models/Car.php',
     'App\\Models\\Order' => $baseDir . '/app/Models/Order.php',

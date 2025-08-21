@@ -16,9 +16,10 @@ function AboutUs() {
           
           {/* Kolom Gambar */}
           <div data-aos="fade-right" className="relative">
-            <div className="absolute -top-4 -left-4 w-full h-full bg-indigo-200 rounded-lg transform -rotate-3"></div>
+            {/* --- BAGIAN INI DIPERBARUI --- */}
+            <div className="absolute -top-4 -left-4 w-full h-full bg-orange-200 rounded-lg transform -rotate-3"></div>
             <img 
-              src={aboutImage} // 2. Gunakan gambar yang diimpor
+              src={aboutImage}
               alt="Armada Mobil CarRental" 
               className="relative rounded-lg shadow-2xl w-full h-full object-cover"
             />
@@ -26,7 +27,8 @@ function AboutUs() {
 
           {/* Kolom Teks */}
           <div data-aos="fade-left">
-            <span className="text-indigo-600 font-semibold uppercase tracking-wider">Tentang Kami</span>
+            {/* --- BAGIAN INI DIPERBARUI --- */}
+            <span className="text-orange-500 font-semibold uppercase tracking-wider">Tentang Kami</span>
             <h2 className="text-4xl font-extrabold text-gray-900 mt-2 mb-6">Partner Perjalanan Terpercaya Anda</h2>
             <p className="text-gray-600 mb-8 leading-relaxed">
               Selamat datang di CARRENTAL, solusi persewaan mobil yang mengutamakan kenyamanan, keamanan, dan kemudahan. Kami hadir untuk memastikan setiap perjalanan Anda, baik untuk bisnis maupun liburan, berjalan lancar tanpa hambatan.
@@ -34,7 +36,8 @@ function AboutUs() {
             
             <div className="space-y-6">
               <div className="flex items-start">
-                <div className="flex-shrink-0 h-16 w-16 flex items-center justify-center bg-indigo-600 text-white rounded-full shadow-lg">
+                {/* --- BAGIAN INI DIPERBARUI --- */}
+                <div className="flex-shrink-0 h-16 w-16 flex items-center justify-center bg-orange-500 text-white rounded-full shadow-lg">
                   <ShieldCheckIcon />
                 </div>
                 <div className="ml-5">
@@ -43,7 +46,8 @@ function AboutUs() {
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="flex-shrink-0 h-16 w-16 flex items-center justify-center bg-indigo-600 text-white rounded-full shadow-lg">
+                {/* --- BAGIAN INI DIPERBARUI --- */}
+                <div className="flex-shrink-0 h-16 w-16 flex items-center justify-center bg-orange-500 text-white rounded-full shadow-lg">
                   <ClockIcon />
                 </div>
                 <div className="ml-5">
@@ -52,7 +56,8 @@ function AboutUs() {
                 </div>
               </div>
               <div className="flex items-start">
-                <div className="flex-shrink-0 h-16 w-16 flex items-center justify-center bg-indigo-600 text-white rounded-full shadow-lg">
+                {/* --- BAGIAN INI DIPERBARUI --- */}
+                <div className="flex-shrink-0 h-16 w-16 flex items-center justify-center bg-orange-500 text-white rounded-full shadow-lg">
                   <CurrencyDollarIcon />
                 </div>
                 <div className="ml-5">

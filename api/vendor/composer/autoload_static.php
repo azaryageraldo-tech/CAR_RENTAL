@@ -554,6 +554,7 @@ class ComposerStaticInit88970a0117c062eed55fa8728fc43833
         'App\\Http\\Controllers\\Api\\Admin\\OrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/Admin/OrderController.php',
         'App\\Http\\Controllers\\Api\\Public\\CarController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/Public/CarController.php',
         'App\\Http\\Controllers\\Api\\Public\\OrderController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/Public/OrderController.php',
+        'App\\Http\\Controllers\\Api\\Public\\PaymentController' => __DIR__ . '/../..' . '/app/Http/Controllers/Api/Public/PaymentController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Models\\Car' => __DIR__ . '/../..' . '/app/Models/Car.php',
         'App\\Models\\Order' => __DIR__ . '/../..' . '/app/Models/Order.php',

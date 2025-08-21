@@ -24,7 +24,7 @@ function Hero() {
             smooth={true} 
             duration={500} 
             offset={-70}
-            className="mt-10 inline-block bg-indigo-600 text-white px-10 py-4 rounded-full text-lg font-semibold hover:bg-indigo-700 transition-transform transform hover:scale-105 shadow-lg cursor-pointer"
+            className="mt-10 inline-block bg-orange-500 text-white px-10 py-4 rounded-full text-lg font-semibold hover:bg-orange-600 transition-transform transform hover:scale-105 shadow-lg cursor-pointer"
           >
             Lihat Pilihan Mobil
           </ScrollLink>

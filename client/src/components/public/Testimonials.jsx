@@ -19,21 +19,24 @@ function Testimonials() {
         </div>
       </div>
       
-      {/* Container untuk carousel dengan padding vertikal */}
       <div 
-        className="flex overflow-x-auto space-x-8 py-16 px-6 snap-x snap-mandatory scrollbar-hide"
+        className="flex overflow-x-auto space-x-8 pb-10 px-6 snap-x snap-mandatory scrollbar-hide"
         data-aos="fade-up"
+        style={{ perspective: '1000px' }} // Menambahkan perspektif untuk efek 3D
       >
         {testimonials.map((testimonial, index) => (
           <div key={index} className="flex-shrink-0 w-5/6 sm:w-1/2 lg:w-1/3 snap-center">
-            <div className="bg-white p-8 rounded-xl shadow-2xl h-full flex flex-col justify-between relative">
-              <div className="flex-grow">
-                <p className="text-gray-600 italic text-lg text-center">"{testimonial.text}"</p>
+            <div 
+              className="bg-white p-8 rounded-xl shadow-2xl h-full flex flex-col justify-between transition-transform duration-500 hover:transform hover:rotate-y-6" // Efek 3D saat hover
+              style={{ transformStyle: 'preserve-3d' }}
+            >
+              <div>
+                <img src={testimonial.image} alt={testimonial.name} className="w-24 h-24 rounded-full mx-auto border-4 border-indigo-200 shadow-lg" />
+                <p className="text-gray-600 italic mt-8 text-lg text-center">"{testimonial.text}"</p>
               </div>
-              <div className="mt-8 pt-8 border-t border-gray-200 text-center">
-                <img src={testimonial.image} alt={testimonial.name} className="w-16 h-16 rounded-full mx-auto mb-4 shadow-lg" />
+              <div className="mt-6 text-center">
                 <p className="font-bold text-xl text-gray-800">{testimonial.name}</p>
-                <p className="text-sm text-indigo-600 font-medium">{testimonial.role}</p>
+                <p className="text-sm text-orange-500 font-medium">{testimonial.role}</p>
               </div>
             </div>
           </div>

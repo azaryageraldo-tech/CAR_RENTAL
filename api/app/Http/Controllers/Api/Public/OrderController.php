@@ -8,9 +8,13 @@ use App\Models\Car;
 use App\Models\Order;
 use Illuminate\Support\Facades\Validator;
 use Carbon\Carbon;
+use PDF; // <-- TAMBAHKAN BARIS INI
 
 class OrderController extends Controller
 {
+    /**
+     * Menyimpan pesanan baru dari pelanggan.
+     */
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
@@ -32,7 +36,6 @@ class OrderController extends Controller
         $startDate = Carbon::parse($request->start_date);
         $endDate = Carbon::parse($request->end_date);
         
-        // Logika perhitungan hari yang benar (termasuk hari pertama)
         $days = $startDate->diffInDays($endDate) + 1;
         $totalPrice = $days * $car->daily_rate;
 
@@ -50,5 +53,26 @@ class OrderController extends Controller
         ]);
 
         return response()->json($order, 201);
+    }
+
+    /**
+     * Menampilkan detail pesanan spesifik untuk halaman sukses.
+     */
+    public function show(Order $order)
+    {
+        return $order->load('car');
+    }
+
+    /**
+     * Mengunduh kwitansi PDF untuk pelanggan.
+     */
+    public function downloadPublicReceipt(Order $order)
+    {
+        if ($order->status !== 'Lunas') {
+            return response()->json(['error' => 'Kwitansi hanya tersedia untuk pesanan yang lunas.'], 403);
+        }
+
+        $pdf = PDF::loadView('receipt', ['order' => $order]);
+        return $pdf->download('kwitansi-carrental-' . $order->id . '.pdf');
     }
 }

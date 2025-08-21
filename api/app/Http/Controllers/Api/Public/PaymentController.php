@@ -12,25 +12,21 @@ use Exception;
 
 class PaymentController extends Controller
 {
-    /**
-     * Membuat transaksi baru di Midtrans dan mendapatkan token pembayaran.
-     */
     public function createTransaction(Request $request)
     {
+        // ... (method createTransaction Anda tidak berubah)
         $request->validate(['order_id' => 'required|exists:orders,id']);
         
         $order = Order::with('car')->find($request->order_id);
 
-        // Set konfigurasi Midtrans dari file config/services.php
         Config::$serverKey = config('services.midtrans.server_key');
         Config::$isProduction = config('services.midtrans.is_production');
         Config::$isSanitized = true;
         Config::$is3ds = true;
 
-        // Siapkan parameter untuk Midtrans
         $params = [
             'transaction_details' => [
-                'order_id' => $order->id . '-' . time(), // Buat ID pesanan unik untuk Midtrans
+                'order_id' => $order->id . '-' . time(),
                 'gross_amount' => $order->total_price,
             ],
             'customer_details' => [
@@ -45,12 +41,12 @@ class PaymentController extends Controller
                 'name' => 'Sewa ' . $order->car->brand . ' ' . $order->car->model,
             ]],
             'enabled_payments' => [
-                'gopay',         // Untuk QRIS
-                'bca_va',        // Virtual Account BCA
-                'mandiri_va',    // Virtual Account Mandiri
+                'gopay',
+                'bca_va',
+                'mandiri_va',
             ],
             "snap_theme" => [
-                "primary_color" => "#4f46e5", // Warna Indigo
+                "primary_color" => "#4f46e5",
                 "button_text_color" => "#ffffff"
             ]
         ];
@@ -77,16 +73,19 @@ class PaymentController extends Controller
             $status = $notification->transaction_status;
             $orderIdMidtrans = $notification->order_id;
             
-            // Ambil ID pesanan asli dari order_id Midtrans
             $orderId = explode('-', $orderIdMidtrans)[0];
 
-            $order = Order::findOrFail($orderId);
+            $order = Order::with('car')->findOrFail($orderId); // Muat relasi mobil
 
-            // Perbarui status pesanan berdasarkan notifikasi Midtrans
+            // Perbarui status pesanan DAN mobil
             if ($status == 'capture' || $status == 'settlement') {
+                // 1. Ubah status pesanan menjadi 'Lunas'
                 $order->update(['status' => 'Lunas']);
+                
+                
+
             } else if ($status == 'pending') {
-                // Tidak melakukan apa-apa, status tetap "Menunggu Pembayaran"
+                // Tidak melakukan apa-apa
             } else if ($status == 'deny' || $status == 'expire' || $status == 'cancel') {
                 $order->update(['status' => 'Batal']);
             }

@@ -17,9 +17,8 @@ class Car extends Model
     protected $fillable = [
         'brand',
         'model',
-        'license_plate',
         'daily_rate',
-        'status',
+        'stock', // Kolom baru
         'image_url',
     ];
 }

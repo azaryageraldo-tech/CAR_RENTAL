@@ -93,7 +93,10 @@ function BookingPage() {
       const paymentResponse = await axios.post('/api/public/payment/create-transaction', { order_id: newOrder.id });
       const { token } = paymentResponse.data;
       window.snap.pay(token, {
-        onSuccess: (result) => { alert("Pembayaran berhasil!"); console.log(result); navigate('/'); },
+        onSuccess: (result) => {
+          console.log(result);
+          navigate(`/booking/success/${newOrder.id}`);
+        },
         onPending: (result) => { alert("Menunggu pembayaran Anda!"); console.log(result); navigate('/'); },
         onError: (result) => { alert("Pembayaran gagal!"); console.log(result); },
         onClose: () => { alert('Anda menutup popup tanpa menyelesaikan pembayaran'); }
@@ -156,7 +159,6 @@ function BookingPage() {
                     </div>
                 </div>
 
-                {/* --- BAGIAN YANG DIPERBAIKI --- */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
                     <label className="text-sm font-medium text-gray-600">Mulai Sewa</label>
@@ -171,7 +173,6 @@ function BookingPage() {
                     {errors.end_date && <p className="text-red-500 text-xs mt-1">{errors.end_date[0]}</p>}
                   </div>
                 </div>
-                {/* --- AKHIR BAGIAN YANG DIPERBAIKI --- */}
                 
                 <div>
                   <label className="text-sm font-medium text-gray-600">Lokasi Pengambilan</label>
